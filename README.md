@@ -1,6 +1,11 @@
-# Delta Operations — professional coming-soon page
+# Delta Operations — exact-triangle coming-soon site
 
-Upload every file in this folder to the root of the GitHub repository.
+This package uses the exact bilingual logo and exact 3D circuit-triangle artwork
+from the approved design mockup.
+
+## Upload
+
+Upload every file to the root of the GitHub repository and replace the existing files.
 
 ## GitHub Pages
 
@@ -10,8 +15,8 @@ Upload every file in this folder to the root of the GitHub repository.
 
 ## Form
 
-The existing Formspree form is already connected:
+The existing Formspree endpoint is already connected:
 
 `https://formspree.io/f/xzdnzlnr`
 
-No new Formspree form is needed.
+No new form is required.

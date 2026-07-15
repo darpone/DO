@@ -3,31 +3,30 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta name="theme-color" content="#f7f9fc">
+  <meta name="theme-color" content="#ffffff">
   <meta name="description" content="Opérations Delta / Delta Operations — Conseil en IA, automatisation, systèmes sur mesure et résolution de problèmes pour PME.">
   <title>Opérations Delta | Delta Operations — Lancement prochain</title>
 
-  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="icon" type="image/png" href="favicon.png">
 
   <style>
     :root {
-      --navy-950: #071a35;
-      --navy-900: #0a2347;
-      --navy-800: #10345f;
-      --ink: #182338;
+      --navy-950: #061a37;
+      --navy-900: #08244b;
+      --navy-800: #113b70;
+      --ink: #16233a;
       --muted: #667085;
-      --line: #dbe3ed;
+      --line: #dce4ee;
       --line-strong: #c7d2df;
       --paper: #ffffff;
       --canvas: #f3f6fa;
-      --canvas-2: #eef2f7;
       --success: #166534;
       --danger: #b42318;
-      --shadow-lg: 0 28px 80px rgba(7, 26, 53, .14);
-      --shadow-md: 0 14px 38px rgba(7, 26, 53, .10);
+      --shadow-lg: 0 30px 90px rgba(6, 26, 55, .14);
+      --shadow-md: 0 16px 42px rgba(6, 26, 55, .10);
       --radius-xl: 30px;
       --radius-lg: 22px;
-      --radius-md: 14px;
+      --radius-md: 13px;
     }
 
     * {
@@ -45,15 +44,14 @@
       min-height: 100vh;
       color: var(--ink);
       background:
-        radial-gradient(circle at 86% 12%, rgba(16, 52, 95, .08), transparent 24rem),
-        linear-gradient(180deg, #ffffff 0%, var(--canvas) 58%, var(--canvas-2) 100%);
+        radial-gradient(circle at 88% 10%, rgba(17, 59, 112, .08), transparent 28rem),
+        linear-gradient(180deg, #ffffff 0%, var(--canvas) 100%);
       font-family:
         Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
         "Segoe UI", sans-serif;
     }
 
-    img,
-    svg {
+    img {
       display: block;
       max-width: 100%;
     }
@@ -68,80 +66,41 @@
       color: inherit;
     }
 
-    .site-shell {
-      width: min(1220px, calc(100% - 28px));
+    .site {
+      width: min(1240px, calc(100% - 28px));
       margin: 18px auto;
       overflow: hidden;
-      border: 1px solid rgba(7, 26, 53, .09);
+      border: 1px solid rgba(6, 26, 55, .09);
       border-radius: var(--radius-xl);
-      background: rgba(255, 255, 255, .94);
+      background: rgba(255, 255, 255, .96);
       box-shadow: var(--shadow-lg);
     }
 
-    .topbar {
+    .header {
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 24px;
-      padding: 20px 30px;
+      padding: 17px 28px;
       border-bottom: 1px solid var(--line);
-      background: rgba(255, 255, 255, .95);
-      backdrop-filter: blur(14px);
+      background: rgba(255, 255, 255, .97);
     }
 
-    .brand {
-      display: flex;
-      align-items: center;
-      min-width: 0;
-      gap: 16px;
+    .header-logo {
+      width: min(475px, 65vw);
+      mix-blend-mode: multiply;
     }
 
-    .brand-mark {
-      width: 72px;
-      flex: 0 0 72px;
-    }
-
-    .brand-copy {
-      min-width: 0;
-      color: var(--navy-950);
-      line-height: 1;
-    }
-
-    .brand-copy .fr,
-    .brand-copy .en {
-      display: block;
-      font-family: Georgia, "Times New Roman", serif;
-      text-transform: uppercase;
-      letter-spacing: .035em;
-    }
-
-    .brand-copy .fr {
-      font-size: clamp(1.18rem, 2.2vw, 1.75rem);
-    }
-
-    .brand-copy .en {
-      margin-top: 4px;
-      color: #6f7a89;
-      font-size: clamp(.78rem, 1.4vw, 1rem);
-      letter-spacing: .16em;
-    }
-
-    .brand-divider {
-      width: 1px;
-      height: 42px;
-      background: var(--line-strong);
-    }
-
-    .launch-badge {
+    .status-pill {
       flex: 0 0 auto;
       padding: 10px 16px;
-      border: 1px solid rgba(7, 26, 53, .13);
+      border: 1px solid rgba(6, 26, 55, .14);
       border-radius: 999px;
       color: var(--navy-950);
       background: #f7f9fc;
       font-size: .74rem;
       font-weight: 850;
-      letter-spacing: .11em;
+      letter-spacing: .1em;
       text-transform: uppercase;
       white-space: nowrap;
     }
@@ -149,30 +108,27 @@
     .hero {
       position: relative;
       display: grid;
-      grid-template-columns: minmax(0, 1.08fr) minmax(360px, .92fr);
-      gap: clamp(34px, 6vw, 74px);
-      align-items: start;
-      padding: clamp(38px, 6vw, 74px);
+      grid-template-columns: minmax(0, 1fr) minmax(420px, .92fr);
+      gap: clamp(34px, 5vw, 68px);
+      align-items: center;
+      padding: clamp(40px, 6vw, 72px);
       overflow: hidden;
     }
 
-    .hero::before {
+    .hero::after {
       content: "";
       position: absolute;
       right: -180px;
-      top: -220px;
-      width: 620px;
-      height: 620px;
-      border: 1px solid rgba(16, 52, 95, .08);
+      top: -160px;
+      width: 560px;
+      height: 560px;
       border-radius: 50%;
-      box-shadow:
-        0 0 0 54px rgba(16, 52, 95, .025),
-        0 0 0 108px rgba(16, 52, 95, .018);
+      background: radial-gradient(circle, rgba(17, 59, 112, .08), transparent 68%);
       pointer-events: none;
     }
 
     .hero-copy,
-    .lead-card {
+    .hero-visual {
       position: relative;
       z-index: 1;
     }
@@ -181,9 +137,9 @@
       display: inline-flex;
       align-items: center;
       gap: 10px;
-      margin-bottom: 20px;
+      margin-bottom: 19px;
       color: var(--navy-800);
-      font-size: .78rem;
+      font-size: .76rem;
       font-weight: 850;
       letter-spacing: .16em;
       text-transform: uppercase;
@@ -198,28 +154,27 @@
 
     h1 {
       margin: 0;
-      max-width: 760px;
       color: var(--navy-950);
       font-family: Georgia, "Times New Roman", serif;
-      font-size: clamp(3rem, 6.3vw, 6.3rem);
+      font-size: clamp(3rem, 6vw, 6rem);
       font-weight: 500;
+      line-height: .98;
       letter-spacing: -.05em;
-      line-height: .96;
     }
 
     .headline-en {
       display: block;
       margin-top: 14px;
-      color: #7b8798;
-      font-size: .62em;
-      letter-spacing: -.035em;
+      color: #778395;
+      font-size: .6em;
+      line-height: 1.02;
     }
 
     .intro {
-      max-width: 680px;
-      margin: 28px 0 0;
+      max-width: 650px;
+      margin: 27px 0 0;
       color: var(--muted);
-      font-size: clamp(1rem, 1.7vw, 1.2rem);
+      font-size: clamp(1rem, 1.6vw, 1.18rem);
       line-height: 1.72;
     }
 
@@ -228,47 +183,40 @@
       font-weight: 800;
     }
 
-    .hero-mark-wrap {
-      display: grid;
-      place-items: center;
-      margin: 34px 0 8px;
-      padding: 26px;
+    .hero-image-card {
+      overflow: hidden;
       border: 1px solid var(--line);
       border-radius: 24px;
-      background:
-        linear-gradient(145deg, rgba(255,255,255,.98), rgba(245,248,252,.95));
+      background: #fff;
       box-shadow: var(--shadow-md);
     }
 
-    .hero-mark {
-      width: min(360px, 78vw);
-      filter: drop-shadow(0 24px 26px rgba(7, 26, 53, .14));
+    .hero-image-card img {
+      width: 100%;
+      height: auto;
     }
 
-    .services {
+    .service-grid {
       display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
+      grid-template-columns: repeat(4, minmax(0, 1fr));
       gap: 12px;
-      margin-top: 22px;
+      margin-top: 28px;
     }
 
     .service {
-      display: grid;
-      grid-template-columns: 44px 1fr;
-      gap: 14px;
-      align-items: start;
       min-width: 0;
-      padding: 16px;
+      padding: 17px 15px;
       border: 1px solid var(--line);
       border-radius: 16px;
-      background: #ffffff;
+      background: #fff;
     }
 
     .service-icon {
-      width: 44px;
-      height: 44px;
+      width: 42px;
+      height: 42px;
       display: grid;
       place-items: center;
+      margin-bottom: 12px;
       border: 1px solid var(--line-strong);
       border-radius: 12px;
       color: var(--navy-950);
@@ -276,43 +224,112 @@
     }
 
     .service-icon svg {
-      width: 24px;
-      height: 24px;
+      width: 23px;
+      height: 23px;
+      fill: none;
       stroke: currentColor;
+      stroke-width: 1.7;
+      stroke-linecap: round;
+      stroke-linejoin: round;
     }
 
     .service h3 {
-      margin: 1px 0 3px;
+      margin: 0;
       color: var(--navy-950);
-      font-size: .92rem;
-      line-height: 1.25;
+      font-size: .9rem;
+      line-height: 1.28;
     }
 
     .service p {
-      margin: 0;
+      margin: 5px 0 0;
       color: var(--muted);
-      font-size: .78rem;
-      line-height: 1.45;
+      font-size: .76rem;
+      line-height: 1.48;
     }
 
-    .lead-card {
-      padding: clamp(22px, 3vw, 32px);
-      border: 1px solid var(--line);
-      border-radius: var(--radius-lg);
-      background: rgba(255,255,255,.98);
-      box-shadow: var(--shadow-md);
+    .form-section {
+      display: grid;
+      grid-template-columns: minmax(0, .88fr) minmax(430px, 1.12fr);
+      gap: clamp(30px, 5vw, 64px);
+      align-items: center;
+      padding: clamp(34px, 5vw, 62px);
+      border-top: 1px solid var(--line);
+      background:
+        linear-gradient(145deg, #f9fbfd, #f1f5f9);
     }
 
-    .lead-card h2 {
+    .form-copy h2 {
       margin: 0;
       color: var(--navy-950);
       font-family: Georgia, "Times New Roman", serif;
-      font-size: clamp(1.7rem, 3vw, 2.35rem);
+      font-size: clamp(2.15rem, 4.2vw, 4.5rem);
+      font-weight: 500;
+      line-height: 1.03;
+      letter-spacing: -.04em;
+    }
+
+    .form-copy p {
+      margin: 22px 0 0;
+      color: var(--muted);
+      line-height: 1.7;
+      font-size: 1rem;
+    }
+
+    .principles {
+      display: grid;
+      gap: 13px;
+      margin-top: 28px;
+    }
+
+    .principle {
+      display: grid;
+      grid-template-columns: 28px 1fr;
+      gap: 12px;
+      align-items: start;
+    }
+
+    .principle-mark {
+      width: 24px;
+      height: 24px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      color: white;
+      background: var(--navy-950);
+      font-size: .72rem;
+      font-weight: 900;
+    }
+
+    .principle strong {
+      color: var(--navy-950);
+    }
+
+    .principle span {
+      display: block;
+      margin-top: 2px;
+      color: var(--muted);
+      font-size: .87rem;
+      line-height: 1.5;
+    }
+
+    .form-card {
+      padding: clamp(22px, 3vw, 34px);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      background: rgba(255, 255, 255, .99);
+      box-shadow: var(--shadow-md);
+    }
+
+    .form-card h3 {
+      margin: 0;
+      color: var(--navy-950);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(1.65rem, 3vw, 2.35rem);
       font-weight: 600;
       text-align: center;
     }
 
-    .lead-card .subhead {
+    .form-card .subhead {
       margin: 8px 0 24px;
       color: var(--muted);
       text-align: center;
@@ -339,7 +356,7 @@
       border-radius: 11px;
       outline: none;
       color: var(--ink);
-      background: #ffffff;
+      background: #fff;
       transition: border-color .16s ease, box-shadow .16s ease;
     }
 
@@ -363,7 +380,7 @@
     input:focus,
     textarea:focus {
       border-color: var(--navy-800);
-      box-shadow: 0 0 0 4px rgba(16, 52, 95, .09);
+      box-shadow: 0 0 0 4px rgba(17, 59, 112, .09);
     }
 
     .consent {
@@ -387,13 +404,13 @@
       min-height: 54px;
       border: 0;
       border-radius: 11px;
-      color: white;
+      color: #fff;
       background: linear-gradient(135deg, var(--navy-950), var(--navy-800));
       font-weight: 900;
       letter-spacing: .055em;
       text-transform: uppercase;
       cursor: pointer;
-      box-shadow: 0 14px 26px rgba(7, 26, 53, .18);
+      box-shadow: 0 14px 28px rgba(6, 26, 55, .18);
       transition: transform .15s ease, filter .15s ease;
     }
 
@@ -424,45 +441,15 @@
       color: var(--danger);
     }
 
-    .trust-strip {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      border-top: 1px solid var(--line);
-      border-bottom: 1px solid var(--line);
-      background: #fbfcfe;
-    }
-
-    .trust-item {
-      padding: 22px;
-      text-align: center;
-    }
-
-    .trust-item + .trust-item {
-      border-left: 1px solid var(--line);
-    }
-
-    .trust-item strong {
-      display: block;
-      color: var(--navy-950);
-      font-size: .95rem;
-    }
-
-    .trust-item span {
-      display: block;
-      margin-top: 5px;
-      color: var(--muted);
-      font-size: .78rem;
-      line-height: 1.45;
-    }
-
     footer {
       display: flex;
       flex-wrap: wrap;
       justify-content: space-between;
       gap: 12px;
       padding: 20px 28px;
+      border-top: 1px solid var(--line);
       color: var(--muted);
-      background: #ffffff;
+      background: #fff;
       font-size: .8rem;
     }
 
@@ -472,86 +459,63 @@
       text-decoration: none;
     }
 
-    @media (max-width: 940px) {
-      .topbar {
-        padding: 16px 18px;
-      }
-
-      .launch-badge {
+    @media (max-width: 980px) {
+      .status-pill {
         display: none;
       }
 
       .hero {
         grid-template-columns: 1fr;
-        padding: 42px 24px 28px;
       }
 
-      .lead-card {
-        width: min(100%, 700px);
+      .hero-visual {
+        width: min(100%, 720px);
         margin: 0 auto;
       }
 
-      .trust-strip {
-        grid-template-columns: repeat(2, 1fr);
+      .service-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
       }
 
-      .trust-item:nth-child(3) {
-        border-left: 0;
-        border-top: 1px solid var(--line);
+      .form-section {
+        grid-template-columns: 1fr;
       }
 
-      .trust-item:nth-child(4) {
-        border-top: 1px solid var(--line);
+      .form-card {
+        width: min(100%, 720px);
+        margin: 0 auto;
       }
     }
 
-    @media (max-width: 620px) {
-      .site-shell {
+    @media (max-width: 640px) {
+      .site {
         width: 100%;
         margin: 0;
         border: 0;
         border-radius: 0;
       }
 
-      .topbar {
-        gap: 12px;
+      .header {
         padding: 11px 12px;
       }
 
-      .brand {
-        gap: 10px;
-      }
-
-      .brand-mark {
-        width: 54px;
-        flex-basis: 54px;
-      }
-
-      .brand-divider {
-        height: 34px;
-      }
-
-      .brand-copy .fr {
-        font-size: 1rem;
-      }
-
-      .brand-copy .en {
-        font-size: .68rem;
-        letter-spacing: .11em;
+      .header-logo {
+        width: 100%;
+        max-width: 460px;
       }
 
       .hero {
-        gap: 22px;
-        padding: 30px 15px 20px;
+        gap: 26px;
+        padding: 30px 15px 22px;
       }
 
       .eyebrow {
         margin-bottom: 14px;
-        font-size: .69rem;
+        font-size: .68rem;
       }
 
       h1 {
-        font-size: clamp(2.45rem, 13vw, 4rem);
+        font-size: clamp(2.55rem, 13vw, 4rem);
         line-height: 1;
       }
 
@@ -561,26 +525,20 @@
 
       .intro {
         margin-top: 20px;
-        font-size: .98rem;
+        font-size: .97rem;
         line-height: 1.62;
       }
 
-      .hero-mark-wrap {
-        margin-top: 24px;
-        padding: 18px;
+      .hero-image-card {
+        border-radius: 17px;
       }
 
-      .hero-mark {
-        width: min(280px, 78vw);
-      }
-
-      .services {
+      .service-grid {
         gap: 10px;
+        margin-top: 20px;
       }
 
       .service {
-        grid-template-columns: 38px 1fr;
-        gap: 10px;
         padding: 13px 11px;
       }
 
@@ -597,16 +555,16 @@
         font-size: .72rem;
       }
 
-      .lead-card {
+      .form-section {
+        padding: 30px 15px 22px;
+      }
+
+      .form-copy h2 {
+        font-size: clamp(2.2rem, 11vw, 3.5rem);
+      }
+
+      .form-card {
         padding: 22px 15px;
-      }
-
-      .trust-strip {
-        grid-template-columns: 1fr 1fr;
-      }
-
-      .trust-item {
-        padding: 17px 10px;
       }
 
       footer {
@@ -616,19 +574,8 @@
     }
 
     @media (max-width: 390px) {
-      .services {
+      .service-grid {
         grid-template-columns: 1fr;
-      }
-
-      .trust-strip {
-        grid-template-columns: 1fr;
-      }
-
-      .trust-item + .trust-item,
-      .trust-item:nth-child(3),
-      .trust-item:nth-child(4) {
-        border-left: 0;
-        border-top: 1px solid var(--line);
       }
     }
 
@@ -644,24 +591,22 @@
 </head>
 
 <body>
-  <div class="site-shell">
-    <header class="topbar">
-      <div class="brand" aria-label="Opérations Delta / Delta Operations">
-        <img class="brand-mark" src="delta-mark.svg" alt="">
-        <span class="brand-divider" aria-hidden="true"></span>
-        <span class="brand-copy">
-          <span class="fr">Opérations Delta</span>
-          <span class="en">Delta Operations</span>
-        </span>
-      </div>
-
-      <div class="launch-badge">Lancement prochain · Launching soon</div>
+  <div class="site">
+    <header class="header">
+      <img
+        class="header-logo"
+        src="delta-logo-exact.png"
+        alt="Opérations Delta | Delta Operations"
+        width="475"
+        height="133"
+      >
+      <div class="status-pill">Lancement prochain · Launching soon</div>
     </header>
 
     <main>
       <section class="hero">
         <div class="hero-copy">
-          <div class="eyebrow">Solutions pratiques pour PME</div>
+          <div class="eyebrow">Votre partenaire technologique</div>
 
           <h1>
             Lancement prochain.<br>
@@ -671,74 +616,115 @@
 
           <p class="intro">
             <strong>Conseil en IA, automatisation, systèmes sur mesure et résolution de problèmes.</strong><br>
-            We help small businesses identify the right solution, choose the right tools and build what is missing.
+            We help small businesses identify the right solution, choose the right tools
+            and build what is missing.
           </p>
 
-          <div class="hero-mark-wrap" aria-hidden="true">
-            <img class="hero-mark" src="delta-mark.svg" alt="">
-          </div>
-
-          <div class="services">
+          <div class="service-grid" aria-label="Services">
             <article class="service">
               <div class="service-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke-width="1.7">
-                  <path d="M9 3v3M15 3v3M9 18v3M15 18v3M3 9h3M3 15h3M18 9h3M18 15h3"/>
-                  <rect x="6" y="6" width="12" height="12" rx="3"/>
+                <svg viewBox="0 0 24 24">
+                  <rect x="5" y="5" width="14" height="14" rx="3"/>
+                  <path d="M9 2v3M15 2v3M9 19v3M15 19v3M2 9h3M2 15h3M19 9h3M19 15h3"/>
                   <path d="M9 12h6M12 9v6"/>
                 </svg>
               </div>
-              <div>
-                <h3>Conseil en IA</h3>
-                <p>AI consulting and practical strategy.</p>
-              </div>
+              <h3>Conseil en IA</h3>
+              <p>AI consulting and practical strategy.</p>
             </article>
 
             <article class="service">
               <div class="service-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke-width="1.7">
-                  <path d="M12 2v3M12 19v3M4.93 4.93l2.12 2.12M16.95 16.95l2.12 2.12M2 12h3M19 12h3M4.93 19.07l2.12-2.12M16.95 7.05l2.12-2.12"/>
+                <svg viewBox="0 0 24 24">
                   <circle cx="12" cy="12" r="4"/>
+                  <path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9 7 7M17 17l2.1 2.1M4.9 19.1 7 17M17 7l2.1-2.1"/>
                 </svg>
               </div>
-              <div>
-                <h3>Automatisation</h3>
-                <p>Automation that reduces manual work.</p>
-              </div>
+              <h3>Automatisation</h3>
+              <p>Automation that reduces manual work.</p>
             </article>
 
             <article class="service">
               <div class="service-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke-width="1.7">
+                <svg viewBox="0 0 24 24">
                   <rect x="3" y="4" width="18" height="16" rx="2"/>
                   <path d="M7 9l3 3-3 3M13 15h4"/>
                 </svg>
               </div>
-              <div>
-                <h3>Systèmes sur mesure</h3>
-                <p>Custom internal tools and integrations.</p>
-              </div>
+              <h3>Systèmes sur mesure</h3>
+              <p>Custom internal tools and integrations.</p>
             </article>
 
             <article class="service">
               <div class="service-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke-width="1.7">
+                <svg viewBox="0 0 24 24">
                   <path d="M8 4h8v4h4v8h-4v4H8v-4H4V8h4z"/>
                   <path d="M9.5 12h5"/>
                 </svg>
               </div>
-              <div>
-                <h3>Résolution de problèmes</h3>
-                <p>Clear answers to difficult business problems.</p>
-              </div>
+              <h3>Résolution de problèmes</h3>
+              <p>Clear answers to difficult business problems.</p>
             </article>
           </div>
         </div>
 
-        <aside class="lead-card">
-          <h2>Parlez-nous de votre besoin</h2>
+        <div class="hero-visual">
+          <div class="hero-image-card">
+            <img
+              src="delta-triangle-tech.png"
+              alt="Logo Delta tridimensionnel bleu et argent sur un arrière-plan technologique"
+              width="525"
+              height="388"
+            >
+          </div>
+        </div>
+      </section>
+
+      <section class="form-section">
+        <div class="form-copy">
+          <h2>
+            Parlez-nous de ce que vous cherchez à résoudre.
+          </h2>
+
+          <p>
+            Vous n’avez pas besoin de connaître la technologie ou la solution exacte.
+            Décrivez simplement le problème, le processus ou l’idée. Nous déterminerons
+            ensuite l’approche la plus logique.<br><br>
+            You do not need to know the exact technology or solution. Tell us what is
+            not working, what takes too long or what you want to build.
+          </p>
+
+          <div class="principles">
+            <div class="principle">
+              <span class="principle-mark">1</span>
+              <div>
+                <strong>Comprendre / Understand</strong>
+                <span>Clarify the real business problem and desired result.</span>
+              </div>
+            </div>
+
+            <div class="principle">
+              <span class="principle-mark">2</span>
+              <div>
+                <strong>Recommander / Recommend</strong>
+                <span>Choose an existing tool, automation or custom system only when justified.</span>
+              </div>
+            </div>
+
+            <div class="principle">
+              <span class="principle-mark">3</span>
+              <div>
+                <strong>Construire / Build</strong>
+                <span>Move from a clear plan to a practical working solution.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <aside class="form-card">
+          <h3>Restez informé du lancement</h3>
           <p class="subhead">
-            Tell us what you are trying to solve.<br>
-            We will contact you when launch availability opens.
+            Stay informed at launch and tell us what you would like to solve.
           </p>
 
           <form id="lead-form" action="https://formspree.io/f/xzdnzlnr" method="POST">
@@ -768,10 +754,10 @@
             <label class="consent">
               <input type="checkbox" name="consent" value="yes" required>
               <span>
-                J’accepte de recevoir des communications liées au lancement et aux services d’Opérations Delta.
-                Je peux me désabonner en tout temps.<br>
-                I agree to receive launch and service communications from Delta Operations.
-                I can unsubscribe at any time.
+                J’accepte de recevoir des communications liées au lancement et aux
+                services d’Opérations Delta. Je peux me désabonner en tout temps.<br>
+                I agree to receive launch and service communications from Delta
+                Operations. I can unsubscribe at any time.
               </span>
             </label>
 
@@ -782,25 +768,6 @@
             <p id="form-status" class="status" role="status" aria-live="polite"></p>
           </form>
         </aside>
-      </section>
-
-      <section class="trust-strip" aria-label="Our approach">
-        <div class="trust-item">
-          <strong>Stratégique / Strategic</strong>
-          <span>Solutions aligned with the real business goal.</span>
-        </div>
-        <div class="trust-item">
-          <strong>Efficace / Efficient</strong>
-          <span>Less friction, less repetition, better flow.</span>
-        </div>
-        <div class="trust-item">
-          <strong>Fiable / Reliable</strong>
-          <span>Clear scope, dependable delivery, secure choices.</span>
-        </div>
-        <div class="trust-item">
-          <strong>Partenaire / Partner</strong>
-          <span>One person to move from problem to solution.</span>
-        </div>
       </section>
     </main>
 
