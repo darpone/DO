@@ -1,3 +1,3 @@
-# Delta Operations — exact-triangle coming-soon site
+# Delta Operations
 
 These are not the droids you are looking for.
