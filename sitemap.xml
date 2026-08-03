@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url><loc>https://www.deltaoperations.ca/</loc></url>
+  <url><loc>https://www.deltaoperations.ca/fr/</loc><xhtml:link rel="alternate" hreflang="fr" href="https://www.deltaoperations.ca/fr/"/><xhtml:link rel="alternate" hreflang="en" href="https://www.deltaoperations.ca/en/"/></url>
+  <url><loc>https://www.deltaoperations.ca/en/</loc><xhtml:link rel="alternate" hreflang="fr" href="https://www.deltaoperations.ca/fr/"/><xhtml:link rel="alternate" hreflang="en" href="https://www.deltaoperations.ca/en/"/></url>
+  <url><loc>https://www.deltaoperations.ca/fr/services/</loc></url><url><loc>https://www.deltaoperations.ca/en/services/</loc></url>
+  <url><loc>https://www.deltaoperations.ca/fr/solutions/</loc></url><url><loc>https://www.deltaoperations.ca/en/solutions/</loc></url>
+  <url><loc>https://www.deltaoperations.ca/fr/outils/</loc></url><url><loc>https://www.deltaoperations.ca/en/tools/</loc></url>
+  <url><loc>https://www.deltaoperations.ca/fr/secteurs/</loc></url><url><loc>https://www.deltaoperations.ca/en/sectors/</loc></url>
+  <url><loc>https://www.deltaoperations.ca/fr/a-propos/</loc></url><url><loc>https://www.deltaoperations.ca/en/about/</loc></url>
+  <url><loc>https://www.deltaoperations.ca/fr/contact/</loc></url><url><loc>https://www.deltaoperations.ca/en/contact/</loc></url>
+  <url><loc>https://www.deltaoperations.ca/fr/confidentialite/</loc></url><url><loc>https://www.deltaoperations.ca/en/privacy/</loc></url>
+</urlset>
