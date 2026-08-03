@@ -7,9 +7,9 @@
   <a class="brand" href="/"><span class="brand-mark" aria-hidden="true"></span><span><strong>Delta Operations</strong><small>Opérations Delta</small></span></a>
   <button class="nav-toggle" data-nav-toggle aria-expanded="false" aria-controls="main-nav">Menu</button>
   <nav class="main-nav" id="main-nav" data-nav aria-label="Main navigation"><a href="/">Home</a><a href="/services/">Services</a><a href="/solutions/">Solutions</a><a href="/tools/" aria-current="page">Tools</a><a href="/sectors/">Sectors</a><a href="/about/">About</a><a href="/contact/">Contact</a></nav>
-  <div class="lang-switch" aria-label="Language"><a href="/fr/" lang="fr">FR</a><a href="/" lang="en" class="active" aria-current="true">EN</a></div>
+  <div class="lang-switch" aria-label="Language"><a href="/fr/outils/calculateur-roi/" lang="fr">FR</a><a href="/tools/roi-calculator/" lang="en" class="active" aria-current="true">EN</a></div>
 </div></header><main id="main"><section class="page-hero"><div class="container"><p class="breadcrumbs">TOOL 02</p><h1>Automation ROI calculator</h1><p>Estimate recovered time, savings, and payback in Canadian dollars.</p></div></section><section class="section"><div class="container"><div class="tool-shell"><form data-roi class="form-grid two">
-<div class="field"><label for="hours">Hours per week spent on the task</label><input id="hours" name="hours" type="number" min="0" step=".5" value="10" required></div>
+<div class="field"><label for="hours">Hours per employee per week spent on the task</label><span class="hint" id="hours-help">Enter the average weekly hours for one employee.</span><input id="hours" name="hours" type="number" min="0" step=".5" value="10" aria-describedby="hours-help" required></div>
 <div class="field"><label for="employees">Employees involved</label><input id="employees" name="employees" type="number" min="1" value="2" required></div>
 <div class="field"><label for="hourly">Loaded hourly cost (CAD)</label><input id="hourly" name="hourly" type="number" min="0" value="45" required></div>
 <div class="field"><label for="automatable">Work that could be automated (%)</label><input id="automatable" name="automatable" type="number" min="0" max="100" value="60" required></div>

@@ -8,7 +8,7 @@ function Save-Page([string]$Path, [string]$Content) {
   [System.IO.File]::WriteAllText($target, $Content, [System.Text.UTF8Encoding]::new($false))
 }
 
-function Header([string]$Lang, [string]$Active) {
+function Header([string]$Lang, [string]$Active, [string]$Canonical='/', [string]$Alternate='/fr/') {
   $fr = $Lang -eq 'fr'
   $homeUrl = if ($fr) { '/fr/' } else { '/' }
   $items = if ($fr) {
@@ -22,13 +22,15 @@ function Header([string]$Lang, [string]$Active) {
   $menu = if ($fr) {'Menu'} else {'Menu'}
   $activeFr = if ($fr) {' class="active" aria-current="true"'} else {''}
   $activeEn = if (-not $fr) {' class="active" aria-current="true"'} else {''}
+  $frUrl = if ($fr) { $Canonical } else { $Alternate }
+  $enUrl = if ($fr) { $Alternate } else { $Canonical }
   return @"
 <a class="skip" href="#main">$(if($fr){'Aller au contenu'}else{'Skip to content'})</a>
 <header class="site-header"><div class="container header-inner">
   <a class="brand" href="$homeUrl"><span class="brand-mark" aria-hidden="true"></span><span><strong>$brandTop</strong><small>$brandBottom</small></span></a>
   <button class="nav-toggle" data-nav-toggle aria-expanded="false" aria-controls="main-nav">$menu</button>
   <nav class="main-nav" id="main-nav" data-nav aria-label="$(if($fr){'Navigation principale'}else{'Main navigation'})">$links</nav>
-  <div class="lang-switch" aria-label="$(if($fr){'Langue'}else{'Language'})"><a href="/fr/" lang="fr"$activeFr>FR</a><a href="/" lang="en"$activeEn>EN</a></div>
+  <div class="lang-switch" aria-label="$(if($fr){'Langue'}else{'Language'})"><a href="$frUrl" lang="fr"$activeFr>FR</a><a href="$enUrl" lang="en"$activeEn>EN</a></div>
 </div></header>
 "@
 }
@@ -70,7 +72,7 @@ function Page([string]$Lang,[string]$Title,[string]$Description,[string]$Canonic
 <title>$Title</title><meta name="description" content="$Description"><link rel="canonical" href="https://www.deltaoperations.ca$Canonical"><link rel="alternate" hreflang="$Lang" href="https://www.deltaoperations.ca$Canonical"><link rel="alternate" hreflang="$(if($Lang -eq 'fr'){'en'}else{'fr'})" href="https://www.deltaoperations.ca$Alternate"><link rel="alternate" hreflang="x-default" href="https://www.deltaoperations.ca/">
 <meta property="og:type" content="website"><meta property="og:locale" content="$ogLocale"><meta property="og:title" content="$Title"><meta property="og:description" content="$Description"><meta property="og:url" content="https://www.deltaoperations.ca$Canonical"><meta property="og:image" content="https://www.deltaoperations.ca/delta-triangle-tech.png">
 <link rel="icon" href="/favicon.png"><link rel="stylesheet" href="/assets/css/styles.css"></head><body>
-$(Header $Lang $Active)<main id="main">$Body</main>$(Footer $Lang)<script src="/assets/js/main.js"></script>$ExtraScripts</body></html>
+$(Header $Lang $Active $Canonical $Alternate)<main id="main">$Body</main>$(Footer $Lang)<script src="/assets/js/main.js"></script>$ExtraScripts</body></html>
 "@
 }
 
@@ -167,7 +169,7 @@ Save-Page 'fr/outils/diagnostic-workflow/index.html' (Page 'fr' 'Diagnostic de w
 
 function RoiBody([string]$Lang){$fr=$Lang-eq'fr';return (PageHero $(if($fr){'OUTIL 02'}else{'TOOL 02'}) $(if($fr){'Calculateur ROI automation'}else{'Automation ROI calculator'}) $(if($fr){'Estimez le temps récupéré, les économies et la période de récupération en dollars canadiens.'}else{'Estimate recovered time, savings, and payback in Canadian dollars.'}))+@"
 <section class="section"><div class="container"><div class="tool-shell"><form data-roi class="form-grid two">
-<div class="field"><label for="hours">$(if($fr){'Heures par semaine consacrées à la tâche'}else{'Hours per week spent on the task'})</label><input id="hours" name="hours" type="number" min="0" step=".5" value="10" required></div>
+<div class="field"><label for="hours">$(if($fr){'Heures par employé consacrées à cette tâche chaque semaine'}else{'Hours per employee per week spent on the task'})</label><span class="hint" id="hours-help">$(if($fr){'Entrez le nombre moyen d&rsquo;heures hebdomadaires pour un seul employé.'}else{'Enter the average weekly hours for one employee.'})</span><input id="hours" name="hours" type="number" min="0" step=".5" value="10" aria-describedby="hours-help" required></div>
 <div class="field"><label for="employees">$(if($fr){'Nombre d&rsquo;employés concernés'}else{'Employees involved'})</label><input id="employees" name="employees" type="number" min="1" value="2" required></div>
 <div class="field"><label for="hourly">$(if($fr){'Coût horaire chargé (CAD)'}else{'Loaded hourly cost (CAD)'})</label><input id="hourly" name="hourly" type="number" min="0" value="45" required></div>
 <div class="field"><label for="automatable">$(if($fr){'Part automatisable (%)'}else{'Work that could be automated (%)'})</label><input id="automatable" name="automatable" type="number" min="0" max="100" value="60" required></div>
