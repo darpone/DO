@@ -12,9 +12,9 @@ function Header([string]$Lang, [string]$Active, [string]$Canonical='/', [string]
   $fr = $Lang -eq 'fr'
   $homeUrl = if ($fr) { '/fr/' } else { '/' }
   $items = if ($fr) {
-    @(@('home','Accueil','/fr/'),@('services','Services','/fr/services/'),@('solutions','Solutions','/fr/solutions/'),@('tools','Outils','/fr/outils/'),@('sectors','Secteurs','/fr/secteurs/'),@('about','À propos','/fr/a-propos/'),@('contact','Contact','/fr/contact/'))
+    @(@('home','Accueil','/fr/'),@('services','Services','/fr/services/'),@('solutions','Solutions','/fr/solutions/'),@('products','Produits','/fr/produits/'),@('tools','Outils','/fr/outils/'),@('sectors','Secteurs','/fr/secteurs/'),@('about','À propos','/fr/a-propos/'),@('contact','Contact','/fr/contact/'))
   } else {
-    @(@('home','Home','/'),@('services','Services','/services/'),@('solutions','Solutions','/solutions/'),@('tools','Tools','/tools/'),@('sectors','Sectors','/sectors/'),@('about','About','/about/'),@('contact','Contact','/contact/'))
+    @(@('home','Home','/'),@('services','Services','/services/'),@('solutions','Solutions','/solutions/'),@('products','Products','/products/'),@('tools','Tools','/tools/'),@('sectors','Sectors','/sectors/'),@('about','About','/about/'),@('contact','Contact','/contact/'))
   }
   $links = ($items | ForEach-Object { $current = if ($_[0] -eq $Active) {' aria-current="page"'} else {''}; '<a href="{0}"{1}>{2}</a>' -f $_[2],$current,$_[1] }) -join ''
   $brandTop = if ($fr) {'Opérations Delta'} else {'Delta Operations'}
@@ -53,6 +53,7 @@ function Footer([string]$Lang) {
     $resourceLinks='<a href="/faq/">FAQ</a><a href="/case-studies/">Case studies</a><a href="/guides/">Practical guides</a><a href="/templates/">Templates</a><a href="/videos/">Explainer videos</a>'
     $description='A growth partner for Québec small businesses through automation, AI integration, and custom systems.';$available='Available across Québec';$cta='Request an audit';$priv='Privacy';$term='Terms of use'
   }
+  $resourceLinks = $(if($fr){'<a href="/fr/produits/">Produits</a>'}else{'<a href="/products/">Products</a>'}) + $resourceLinks
   return @"
 <footer class="site-footer"><div class="container"><div class="footer-grid">
   <div class="footer-brand"><a class="brand" href="$homeUrl"><span class="brand-mark" aria-hidden="true"></span><span><strong>$(if($fr){'Opérations Delta'}else{'Delta Operations'})</strong><small>$(if($fr){'Delta Operations'}else{'Opérations Delta'})</small></span></a><p>$description</p></div>
@@ -144,6 +145,54 @@ $solutionsFr=(PageHero 'SOLUTIONS' 'Des systèmes pratiques pour des problèmes 
  '</div><div class="notice" style="margin-top:1.5rem">Il s&rsquo;agit de scénarios représentatifs, et non de résultats garantis ou d&rsquo;affirmations concernant des clients nommés. La portée dépend du processus et des données réels.</div></div></section>'
 Save-Page 'solutions/index.html' (Page 'en' 'Solutions — Delta Operations' 'Client intake, quotes, inventory, case tracking, and automated reporting solutions.' '/solutions/' '/fr/solutions/' 'solutions' $solutionsEn)
 Save-Page 'fr/solutions/index.html' (Page 'fr' 'Solutions — Opérations Delta' 'Solutions pour intake client, soumissions, inventaire, suivi de dossiers et rapports automatiques.' '/fr/solutions/' '/solutions/' 'solutions' $solutionsFr)
+
+function ProductsBody([string]$Lang) {
+  $fr = $Lang -eq 'fr'
+  if ($fr) {
+    $label = 'PRODUITS'; $headline = 'Des outils conçus pour vos opérations.'
+    $intro = 'Découvrez WayCaptain, un produit d&rsquo;Opérations Delta pour relier le terrain et le bureau.'
+    $category = 'Livraisons et opérations sur le terrain'
+    $tagline = 'Vos livraisons. Votre équipe. Une seule plateforme.'
+    $description = 'WayCaptain est un logiciel de gestion des livraisons qui relie les chauffeurs à l&rsquo;équipe de bureau. Planifiez les tournées, répartissez les livraisons et suivez leur progression depuis un tableau de bord centralisé.'
+    $details = 'Sur le terrain, les chauffeurs consultent leurs affectations, ajoutent des notes et documentent les livraisons avec des photos et des heures de passage.'
+    $features = @('Planification et répartition des tournées','Suivi des livraisons et des chauffeurs','Photos de preuve de livraison et notes')
+    $cta = 'Découvrir WayCaptain'; $alt = 'Tableau de bord WayCaptain : tournées, chauffeurs et état des livraisons avec des données de démonstration.'
+    $caption = 'Aperçu du tableau de bord · Données de démonstration fictives'
+  } else {
+    $label = 'PRODUCTS'; $headline = 'Tools built for everyday operations.'
+    $intro = 'Meet WayCaptain, a Delta Operations product that connects your field team and office.'
+    $category = 'Delivery and field operations'
+    $tagline = 'Your deliveries. Your team. One platform.'
+    $description = 'WayCaptain is delivery management software that connects drivers with the office team. Plan routes, dispatch deliveries, and follow their progress from one central dashboard.'
+    $details = 'In the field, drivers can view their assignments, add notes, and document deliveries with photos and arrival and completion times.'
+    $features = @('Route planning and dispatch','Delivery and driver visibility','Proof of delivery photos and notes')
+    $cta = 'Explore WayCaptain'; $alt = 'WayCaptain dashboard showing routes, drivers, and delivery statuses with demonstration data.'
+    $caption = 'Dashboard preview · Fictional demonstration data'
+  }
+  $featureHtml = ($features | ForEach-Object { "<li>$_</li>" }) -join ''
+  return (PageHero $label $headline $intro) + @"
+<section class="section"><div class="container">
+  <article class="product-showcase" aria-labelledby="waycaptain-title">
+    <div class="product-copy">
+      <p class="eyebrow">$category</p>
+      <h2 id="waycaptain-title">WayCaptain</h2>
+      <p class="product-tagline">$tagline</p>
+      <p>$description</p><p>$details</p>
+      <ul class="product-features">$featureHtml</ul>
+      <a class="button" href="https://www.waycaptain.com/">$cta <span aria-hidden="true">↗</span></a>
+      <p class="product-domain">www.waycaptain.com</p>
+    </div>
+    <figure class="product-preview">
+      <div class="product-preview-bar" aria-hidden="true"><span></span><span></span><span></span><b>WayCaptain</b></div>
+      <a href="https://www.waycaptain.com/"><img src="/assets/img/waycaptain-dashboard-$Lang.webp" alt="$alt" width="1280" height="780" decoding="async"></a>
+      <figcaption>$caption</figcaption>
+    </figure>
+  </article>
+</div></section>
+"@
+}
+Save-Page 'products/index.html' (Page 'en' 'Products — WayCaptain | Delta Operations' 'Discover WayCaptain, delivery and field operations software by Delta Operations. Plan routes, dispatch drivers, and document deliveries.' '/products/' '/fr/produits/' 'products' (ProductsBody 'en'))
+Save-Page 'fr/produits/index.html' (Page 'fr' 'Produits — WayCaptain | Opérations Delta' 'Découvrez WayCaptain, le logiciel de gestion des livraisons d&rsquo;Opérations Delta. Planifiez les tournées, répartissez les livraisons et suivez vos chauffeurs.' '/fr/produits/' '/products/' 'products' (ProductsBody 'fr'))
 
 $sectorsEn=(PageHero 'SECTORS' 'Technology shaped around the operation.' 'Sector context changes the constraints, language, data, and risk. The process still determines where automation is useful.')+'<section class="section"><div class="container"><div class="grid three"><article class="card" id="professional"><h2>Professional services</h2><p>Engagement intake, documents, approvals, time, client communication, and billing support.</p></article><article class="card" id="construction"><h2>Construction and real estate</h2><p>Quotes, work orders, field-office coordination, inspections, maintenance, and document control.</p></article><article class="card" id="manufacturing"><h2>Manufacturing</h2><p>Production information, quality checks, inventory exceptions, maintenance, and operating reports.</p></article><article class="card" id="retail"><h2>Retail</h2><p>Inventory, purchasing, product information, recurring reports, and customer-request workflows.</p></article><article class="card" id="health"><h2>Health and wellness</h2><p>Administrative workflows and scheduling support with appropriate privacy and human oversight.</p></article><article class="card"><h2>Other Québec SMEs</h2><p>The strongest signals are repeated work, structured inputs, measurable volume, delays, and preventable errors.</p></article></div></div></section>'
 $sectorsFr=(PageHero 'SECTEURS' 'Une technologie adaptée aux opérations.' 'Le secteur change les contraintes, le langage, les données et le risque. Le processus détermine toujours où l&rsquo;automatisation est utile.')+'<section class="section"><div class="container"><div class="grid three"><article class="card" id="professionnels"><h2>Services professionnels</h2><p>Intake de mandats, documents, approbations, temps, communications clients et soutien à la facturation.</p></article><article class="card" id="construction"><h2>Construction et immobilier</h2><p>Soumissions, bons de travail, coordination terrain-bureau, inspections, entretien et contrôle documentaire.</p></article><article class="card" id="manufacturier"><h2>Manufacturier</h2><p>Données de production, contrôles qualité, exceptions d&rsquo;inventaire, entretien et rapports.</p></article><article class="card" id="detail"><h2>Commerce de détail</h2><p>Inventaire, achats, information produit, rapports périodiques et demandes clients.</p></article><article class="card" id="sante"><h2>Santé et bien-être</h2><p>Workflows administratifs et soutien à la planification avec confidentialité et supervision humaine.</p></article><article class="card"><h2>Autres PME québécoises</h2><p>Les meilleurs signaux sont le travail répétitif, les entrées structurées, le volume mesurable, les délais et les erreurs évitables.</p></article></div></div></section>'
@@ -261,6 +310,7 @@ Save-Page 'fr/conditions-utilisation/index.html' (Page 'fr' 'Conditions d&rsquo;
 
 function RedirectPage([string]$Target){return "<!doctype html><html lang=`"en`"><head><meta charset=`"utf-8`"><meta name=`"viewport`" content=`"width=device-width,initial-scale=1`"><meta http-equiv=`"refresh`" content=`"0; url=$Target`"><link rel=`"canonical`" href=`"https://www.deltaoperations.ca$Target`"><title>Redirecting — Delta Operations</title></head><body><p><a href=`"$Target`">Continue to Delta Operations</a></p></body></html>"}
 $redirects=[ordered]@{
+ 'en/products/index.html'='/products/';
  'en/index.html'='/';'en/services/index.html'='/services/';'en/solutions/index.html'='/solutions/';'en/tools/index.html'='/tools/';'en/sectors/index.html'='/sectors/';'en/about/index.html'='/about/';'en/contact/index.html'='/contact/';'en/privacy/index.html'='/privacy/';
  'en/resources/index.html'='/resources/';'en/faq/index.html'='/faq/';'en/case-studies/index.html'='/case-studies/';'en/guides/index.html'='/guides/';'en/templates/index.html'='/templates/';'en/videos/index.html'='/videos/';'en/terms/index.html'='/terms/';
  'en/tools/workflow-diagnostic/index.html'='/tools/workflow-diagnostic/';'en/tools/roi-calculator/index.html'='/tools/roi-calculator/';'en/tools/sme-express-audit/index.html'='/tools/sme-express-audit/';'en/tools/requirements-brief-generator/index.html'='/tools/requirements-brief-generator/';'en/tools/digital-transformation-checklist/index.html'='/tools/digital-transformation-checklist/'
@@ -274,6 +324,7 @@ $notFound=@"
 Save-Page '404.html' $notFound
 
 $urls=@('/','/services/','/solutions/','/tools/','/tools/workflow-diagnostic/','/tools/roi-calculator/','/tools/sme-express-audit/','/tools/requirements-brief-generator/','/tools/digital-transformation-checklist/','/sectors/','/about/','/contact/','/resources/','/faq/','/case-studies/','/guides/','/templates/','/videos/','/privacy/','/terms/','/fr/','/fr/services/','/fr/solutions/','/fr/outils/','/fr/outils/diagnostic-workflow/','/fr/outils/calculateur-roi/','/fr/outils/audit-express-pme/','/fr/outils/generateur-cahier-besoins/','/fr/outils/checklist-transformation-numerique/','/fr/secteurs/','/fr/a-propos/','/fr/contact/','/fr/ressources/','/fr/faq/','/fr/etudes-de-cas/','/fr/guides/','/fr/modeles/','/fr/videos/','/fr/confidentialite/','/fr/conditions-utilisation/')
+$urls += '/products/','/fr/produits/'
 $urlEntries = ($urls | ForEach-Object { "  <url><loc>https://www.deltaoperations.ca$_</loc></url>" }) -join "`n"
 $xml = "<?xml version=`"1.0`" encoding=`"UTF-8`"?>`n<urlset xmlns=`"http://www.sitemaps.org/schemas/sitemap/0.9`">`n$urlEntries`n</urlset>`n"
 Save-Page 'sitemap.xml' $xml

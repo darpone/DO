@@ -15,6 +15,7 @@ Then open `http://localhost:8000/`. Opening the HTML files directly is not recom
 ## Structure
 
 - `/fr/` and `/en/`: localized pages
+- `/products/` and `/fr/produits/`: WayCaptain product page, with an `/en/products/` redirect
 - `/assets/css/styles.css`: shared design system
 - `/assets/js/main.js`: navigation and contact-form enhancement
 - `/assets/js/tools.js`: browser-only interactive tools
@@ -22,3 +23,5 @@ Then open `http://localhost:8000/`. Opening the HTML files directly is not recom
 - `sitemap.xml` and `robots.txt`: search discovery
 
 There is no build step, backend, database, analytics, or tracking. See `README_REBUILD_PLAN.md` for implementation and deployment notes.
+
+To regenerate the static pages after editing shared navigation or content, run `pwsh -File scripts/generate-site.ps1`. WayCaptain dashboard screenshots in `assets/img/waycaptain-dashboard-*.webp` come from the WayCaptain website's localized product previews and contain fictional demonstration data.
