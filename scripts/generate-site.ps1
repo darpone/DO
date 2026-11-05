@@ -1,5 +1,6 @@
 $ErrorActionPreference = 'Stop'
 $siteRoot = (Resolve-Path (Join-Path $PSScriptRoot '..')).Path
+$styleVersion = (Get-FileHash -LiteralPath (Join-Path $siteRoot 'assets/css/styles.css') -Algorithm SHA256).Hash.Substring(0,12).ToLowerInvariant()
 
 function Save-Page([string]$Path, [string]$Content) {
   $target = Join-Path $siteRoot $Path
@@ -72,7 +73,7 @@ function Page([string]$Lang,[string]$Title,[string]$Description,[string]$Canonic
 <!doctype html><html lang="$Lang"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>$Title</title><meta name="description" content="$Description"><link rel="canonical" href="https://www.deltaoperations.ca$Canonical"><link rel="alternate" hreflang="$Lang" href="https://www.deltaoperations.ca$Canonical"><link rel="alternate" hreflang="$(if($Lang -eq 'fr'){'en'}else{'fr'})" href="https://www.deltaoperations.ca$Alternate"><link rel="alternate" hreflang="x-default" href="https://www.deltaoperations.ca/">
 <meta property="og:type" content="website"><meta property="og:locale" content="$ogLocale"><meta property="og:title" content="$Title"><meta property="og:description" content="$Description"><meta property="og:url" content="https://www.deltaoperations.ca$Canonical"><meta property="og:image" content="https://www.deltaoperations.ca/delta-triangle-tech.png">
-<link rel="icon" href="/favicon.png"><link rel="stylesheet" href="/assets/css/styles.css"></head><body>
+<link rel="icon" href="/favicon.png"><link rel="stylesheet" href="/assets/css/styles.css?v=$styleVersion"></head><body>
 $(Header $Lang $Active $Canonical $Alternate)<main id="main">$Body</main>$(Footer $Lang)<script src="/assets/js/main.js"></script>$ExtraScripts</body></html>
 "@
 }
@@ -319,7 +320,7 @@ foreach($entry in $redirects.GetEnumerator()){Save-Page $entry.Key (RedirectPage
 Save-Page 'privacy.html' (RedirectPage '/privacy/')
 
 $notFound=@"
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Page not found — Delta Operations</title><meta name="robots" content="noindex"><link rel="icon" href="/favicon.png"><link rel="stylesheet" href="/assets/css/styles.css"></head><body>$(Header 'en' '')<main id="main"><section class="page-hero"><div class="container"><p class="eyebrow">404</p><h1>Page not found.</h1><p>The address may have changed. Choose a destination below.</p><div class="hero-actions"><a class="button" href="/">English home</a><a class="button secondary" href="/fr/" lang="fr">Accueil français</a></div></div></section></main>$(Footer 'en')<script src="/assets/js/main.js"></script></body></html>
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Page not found — Delta Operations</title><meta name="robots" content="noindex"><link rel="icon" href="/favicon.png"><link rel="stylesheet" href="/assets/css/styles.css?v=$styleVersion"></head><body>$(Header 'en' '')<main id="main"><section class="page-hero"><div class="container"><p class="eyebrow">404</p><h1>Page not found.</h1><p>The address may have changed. Choose a destination below.</p><div class="hero-actions"><a class="button" href="/">English home</a><a class="button secondary" href="/fr/" lang="fr">Accueil français</a></div></div></section></main>$(Footer 'en')<script src="/assets/js/main.js"></script></body></html>
 "@
 Save-Page '404.html' $notFound
 
